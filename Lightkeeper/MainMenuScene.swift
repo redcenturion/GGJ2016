@@ -10,7 +10,15 @@ import Foundation
 import SpriteKit
 
 class MainMenuScene: SKScene {
+    
     var playButton = SKSpriteNode()
-    let platButtonText = SKTexture(imageNamed: "play")
+    let playButtonText = SKTexture(imageNamed: "play")
+    
+    override func didMoveToView(view: SKView) {
+        super.didMoveToView(view)
+        print("We are now in main menu scene")
+    }
+    
+    
     
 }
