@@ -17,10 +17,13 @@ class MainMenuViewController: UIViewController {
             
             print("MainMenuView is loading")
             
-            let scene: SKScene? = MainMenuScene()
-            
-            let skview = SKView.init(frame: UIScreen.mainScreen().bounds)
-            skview.presentScene(scene)
+            let scene: SKScene = MainMenuScene(size: view.bounds.size)
+            let skView = self.view as! SKView
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+            skView.ignoresSiblingOrder = true
+            scene.scaleMode = .ResizeFill
+            skView.presentScene(scene)
             
         }
         
