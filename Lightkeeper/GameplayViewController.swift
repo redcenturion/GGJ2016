@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 class GameplayViewController: UIViewController {
     
@@ -14,6 +15,12 @@ class GameplayViewController: UIViewController {
         super.viewDidLoad()
         
         print("GameplayView is loading")
+        
+        let scene: SKScene? = GameplayScene()
+        
+        let skview = SKView.init(frame: UIScreen.mainScreen().bounds)
+        skview.presentScene(scene)
+        
     }
     
     override func shouldAutorotate() -> Bool {

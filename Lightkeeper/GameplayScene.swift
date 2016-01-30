@@ -10,5 +10,9 @@ import Foundation
 import SpriteKit
 
 class GameplayScene: SKScene {
+    override func didMoveToView(view: SKView) {
+        super.didMoveToView(view)
+        print("We are now in the gameplay scene")
+    }
     
 }
