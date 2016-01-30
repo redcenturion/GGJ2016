@@ -13,6 +13,8 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("View is loading")
 
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
@@ -25,9 +27,8 @@ class GameViewController: UIViewController {
             
             /* Set the scale mode to scale to fit the window */
             scene.scaleMode = .AspectFill
-            
             skView.presentScene(scene)
-        }
+        } else { print ("scene not loaded") }
     }
 
     override func shouldAutorotate() -> Bool {

@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
+        print("GameScene loaded")
         /* Setup your scene here */
         let myLabel = SKLabelNode(fontNamed:"Chalkduster")
         myLabel.text = "Hello, World!"
@@ -19,8 +20,17 @@ class GameScene: SKScene {
         self.addChild(myLabel)
     }
     
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
        /* Called when a touch begins */
+        print("Touches working")
         
     }
    
