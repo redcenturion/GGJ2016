@@ -8,26 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		3F0ED4111C5C82CA0005251E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED4101C5C82CA0005251E /* Main.storyboard */; };
+		3F0ED4131C5D41490005251E /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED4121C5D41490005251E /* GameplayScene.swift */; };
+		3F0ED4151C5D41960005251E /* GameplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED4141C5D41960005251E /* GameplayViewController.swift */; };
 		D0D6F6681C5C7C500065AE1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F6671C5C7C500065AE1C /* AppDelegate.swift */; };
-		D0D6F66C1C5C7C500065AE1C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F66B1C5C7C500065AE1C /* GameScene.swift */; };
-		D0D6F66E1C5C7C500065AE1C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F66D1C5C7C500065AE1C /* GameViewController.swift */; };
 		D0D6F6731C5C7C500065AE1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D6F6721C5C7C500065AE1C /* Assets.xcassets */; };
 		D0D6F6761C5C7C500065AE1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */; };
 		D0D6F6A01C5D3F840065AE1C /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */; };
-		D0D6F6A21C5D40B50065AE1C /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F6A11C5D40B50065AE1C /* MainMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F0ED4101C5C82CA0005251E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3F0ED4121C5D41490005251E /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
+		3F0ED4141C5D41960005251E /* GameplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayViewController.swift; sourceTree = "<group>"; };
 		D0D6F6641C5C7C500065AE1C /* Lightkeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lightkeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D6F6671C5C7C500065AE1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0D6F66B1C5C7C500065AE1C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		D0D6F66D1C5C7C500065AE1C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D0D6F6721C5C7C500065AE1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0D6F6751C5C7C500065AE1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0D6F6771C5C7C500065AE1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
-		D0D6F6A11C5D40B50065AE1C /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				3F0ED4101C5C82CA0005251E /* Main.storyboard */,
+				3F0ED4141C5D41960005251E /* GameplayViewController.swift */,
 				D0D6F6671C5C7C500065AE1C /* AppDelegate.swift */,
-				D0D6F66B1C5C7C500065AE1C /* GameScene.swift */,
-				D0D6F66D1C5C7C500065AE1C /* GameViewController.swift */,
 				D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */,
-				D0D6F6A11C5D40B50065AE1C /* MainMenuController.swift */,
+				3F0ED4121C5D41490005251E /* GameplayScene.swift */,
 				D0D6F6721C5C7C500065AE1C /* Assets.xcassets */,
 				D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */,
 				D0D6F6771C5C7C500065AE1C /* Info.plist */,
@@ -144,11 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0D6F66C1C5C7C500065AE1C /* GameScene.swift in Sources */,
-				D0D6F66E1C5C7C500065AE1C /* GameViewController.swift in Sources */,
+				3F0ED4131C5D41490005251E /* GameplayScene.swift in Sources */,
+				3F0ED4151C5D41960005251E /* GameplayViewController.swift in Sources */,
 				D0D6F6A01C5D3F840065AE1C /* MainMenuScene.swift in Sources */,
 				D0D6F6681C5C7C500065AE1C /* AppDelegate.swift in Sources */,
-				D0D6F6A21C5D40B50065AE1C /* MainMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,10 +249,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -264,10 +263,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
