@@ -14,6 +14,7 @@
 		D0D6F6731C5C7C500065AE1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D6F6721C5C7C500065AE1C /* Assets.xcassets */; };
 		D0D6F6761C5C7C500065AE1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */; };
 		D0D6F6A01C5D3F840065AE1C /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */; };
+		D0D6F6A21C5D40B50065AE1C /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F6A11C5D40B50065AE1C /* MainMenuController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D0D6F6751C5C7C500065AE1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0D6F6771C5C7C500065AE1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		D0D6F6A11C5D40B50065AE1C /* MainMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				D0D6F66B1C5C7C500065AE1C /* GameScene.swift */,
 				D0D6F66D1C5C7C500065AE1C /* GameViewController.swift */,
 				D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */,
+				D0D6F6A11C5D40B50065AE1C /* MainMenuController.swift */,
 				D0D6F6721C5C7C500065AE1C /* Assets.xcassets */,
 				D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */,
 				D0D6F6771C5C7C500065AE1C /* Info.plist */,
@@ -145,6 +148,7 @@
 				D0D6F66E1C5C7C500065AE1C /* GameViewController.swift in Sources */,
 				D0D6F6A01C5D3F840065AE1C /* MainMenuScene.swift in Sources */,
 				D0D6F6681C5C7C500065AE1C /* AppDelegate.swift in Sources */,
+				D0D6F6A21C5D40B50065AE1C /* MainMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
