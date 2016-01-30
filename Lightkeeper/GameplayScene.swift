@@ -15,7 +15,6 @@ class GameplayScene: SKScene {
     
     // MARK: Lifecycle
     override func didMoveToView(view: SKView) {
-        super.didMoveToView(view)
         print("We are now in the gameplay scene")
        
         // Setup
@@ -27,14 +26,29 @@ class GameplayScene: SKScene {
         print("Setting up the background")
         
         // Get the hill textures
-        let atlas = SKTextureAtlas(named: "sprites")
-        let hill_1 = atlas.textureNamed("hills1")
-        let hill_1_Node = SKSpriteNode.init(texture: hill_1)
-        hill_1_Node.zPosition = -1
-        hill_1_Node.anchorPoint = CGPointMake(0.5,0.5)
+        let hill_1 = self.createSpriteFromAtlas(name: "hills1")
+        hill_1.zPosition = -1
+        hill_1.position = CGPointMake(0, UIScreen.mainScreen().bounds.size.height / 3)
+        print("Hill_1 position = \(hill_1.position)")
+        
+        let hill_2 = self.createSpriteFromAtlas(name: "hills2")
+        hill_2.zPosition = -2
+        hill_2.position = CGPointMake(hill_1.position.x + hill_1.size.width, hill_1.position.y)
         
         // Add to the scene
-        self.addChild(hill_1_Node)
+        self.addChild(hill_1)
+        self.addChild(hill_2)
+
+    }
+    
+    // MARK: Sprites
+    private func createSpriteFromAtlas(name spriteName: String) -> SKSpriteNode {
+        let atlas = SKTextureAtlas(named: "sprites")
+        let spriteTexture = atlas.textureNamed(spriteName)
+        let spriteNode = SKSpriteNode.init(texture: spriteTexture)
+        spriteNode.anchorPoint = CGPointMake(0.5,0.5)
+       
+        return spriteNode
     }
     
     // MARK: Touch Events
@@ -47,6 +61,6 @@ class GameplayScene: SKScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
-        print("Update being called")
+//        print("Update being called")
     }
 }

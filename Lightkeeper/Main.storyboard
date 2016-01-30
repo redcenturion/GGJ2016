@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Main Menu View Controller-->
+        <!--Gameplay View Controller-->
         <scene sceneID="ZyJ-07-ctz">
             <objects>
-                <viewController id="MvO-FL-NsC" customClass="MainMenuViewController" customModule="Lightkeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MvO-FL-NsC" customClass="GameplayViewController" customModule="Lightkeeper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P4e-wO-eps"/>
                         <viewControllerLayoutGuide type="bottom" id="Ao4-9j-ZNL"/>
