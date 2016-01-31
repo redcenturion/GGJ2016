@@ -16,6 +16,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private let world: SKNode = SKNode()
     private var player: SKSpriteNode?
     private var audioPlayer: AVAudioPlayer?
+    private var bgmPlayer: AVAudioPlayer?
    
     // Constants
     private let MIDSCREEN: CGPoint = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
@@ -33,6 +34,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         print("We are now in the gameplay scene")
         
         audioPlayer = AVAudioPlayer()
+        bgmPlayer = AVAudioPlayer()
        
         // Setup
         setupWorld()
@@ -43,6 +45,9 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     // MARK: Setup
     private func setupWorld() {
         self.addChild(world)
+        
+        // BGM
+        self.playBGM("Music_Gameplay_1_loop")
     }
     private func setupBackground() {
         print("Setting up the background")
@@ -195,8 +200,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     // MARK: Sounds
     // How to play sounds
     // http://stackoverflow.com/questions/24393495/playing-a-sound-with-avaudioplayer
-    private func playSound(soundName: String)
-    {
+    private func playSound(soundName: String) {
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: "m4a")
         if let path = path {
         do {
@@ -207,7 +211,22 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                     audioPlayer.delegate = self
                     audioPlayer.play()
                 }
-        } catch { print("Error getting the audio file") }
+            } catch { print("Error getting the audio file") }
         } else { print("Not playing anything!") }
+    }
+    
+    private func playBGM(soundName: String) {
+        let path = NSBundle.mainBundle().pathForResource(soundName, ofType: "m4a")
+        if let path = path {
+        do {
+                let nsurl = NSURL(fileURLWithPath: path)
+                bgmPlayer = try AVAudioPlayer(contentsOfURL:nsurl)
+                if let audioPlayer = bgmPlayer {
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.delegate = self
+                    audioPlayer.play()
+                }
+            } catch { print("Error getting the audio file") }
+        } else { print("Not playing anything!") }    
     }
 }
