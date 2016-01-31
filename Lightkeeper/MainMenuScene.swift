@@ -7,18 +7,22 @@
 //
 
 import SpriteKit
+import AVFoundation
 
-class MainMenuScene: SKScene {
+class MainMenuScene: SKScene, AVAudioPlayerDelegate {
     
     private let title: SKLabelNode = SKLabelNode.init(text: "Dawn of Day")
     private var playButton: SKNode?
     private var aboutButton: SKNode?
+    private var bgmPlayer: AVAudioPlayer?
     
     override func didMoveToView(view: SKView) {
         print("We are now in main menu scene")
        
         // Background
         self.backgroundColor = UIColor.blackColor()
+        
+        bgmPlayer = AVAudioPlayer()
         
         // Add the UI elements of the scene
         setupUI()
@@ -80,6 +84,7 @@ class MainMenuScene: SKScene {
         FireParticle.targetNode = self.scene
         
         self.addChild(FireParticle)
+        self.playBGM("Music_Main_Theme")
     }
     private func setupPlayButton() {
         print("Setting up the play button")
@@ -145,6 +150,21 @@ class MainMenuScene: SKScene {
         print("swiped left")
         
     }
-        
     
+    private func playBGM(soundName: String) {
+        let path = NSBundle.mainBundle().pathForResource(soundName, ofType: "m4a")
+        if let path = path {
+            do {
+                let nsurl = NSURL(fileURLWithPath: path)
+                bgmPlayer = try AVAudioPlayer(contentsOfURL:nsurl)
+                if let audioPlayer = bgmPlayer {
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.delegate = self
+                    audioPlayer.numberOfLoops = -1
+                    audioPlayer.volume = 0.8
+                    audioPlayer.play()
+                }
+            } catch { print("Error getting the audio file") }
+        } else { print("Not playing anything!") }
+    }
 }
