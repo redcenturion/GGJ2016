@@ -37,6 +37,8 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     // Constants
     private let MIDSCREEN: CGPoint = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
     private let ORB_RADIUS: CGFloat = 30
+    private let DELAY_BEFORE_SWITCH_SCREEN: Double = 5.0
+    private let ORB_ANIMATION_DURATION: Double = 0.8
     
     // MARK: Lifecycle
     override func didMoveToView(view: SKView) {
@@ -59,7 +61,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
         playOrbInRandomOrder()
         
         // Transition to Gameplay
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(8.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(DELAY_BEFORE_SWITCH_SCREEN * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
             self.switchToGameplayScene()
         })
     }
@@ -170,7 +172,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
         var delay: Double = 0
         var counter: CGFloat = 0
         for element in orbArray {
-            var sequence = SKAction.sequence([SKAction.waitForDuration(delay), SKAction.scaleTo(5, duration: 1.0)])
+            var sequence = SKAction.sequence([SKAction.waitForDuration(delay), SKAction.scaleTo(5, duration: ORB_ANIMATION_DURATION)])
             switch element.intValue {
             case 1:
                 if let cyanOrb = cyanOrb {
@@ -247,7 +249,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
             default:
                 break
             }
-            delay += 1
+            delay += 0.5
             counter += 1
         }
     }
@@ -335,7 +337,8 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     private func switchToGameplayScene() {
         if let scene = self.scene {
             let gameplayScene = GameplayScene(size: scene.size)
-            scene.view?.presentScene(gameplayScene, transition: SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0))
+            let transition = SKTransition.crossFadeWithDuration(3.0)
+            scene.view?.presentScene(gameplayScene, transition: transition)
         } else { print("Not switching scene!") }
     }
 }
