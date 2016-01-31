@@ -57,6 +57,11 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
         setupOrbs()
         setupBackground()
         playOrbInRandomOrder()
+        
+        // Transition to Gameplay
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(8.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+            self.switchToGameplayScene()
+        })
     }
     
     // MARK: Setup
@@ -324,5 +329,13 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                 
             } catch { print("Error getting the audio file") }
         } else { print("Not playing anything!") }
+    }
+    
+    // MARK: Scenes
+    private func switchToGameplayScene() {
+        if let scene = self.scene {
+            let gameplayScene = GameplayScene(size: scene.size)
+            scene.view?.presentScene(gameplayScene, transition: SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 1.0))
+        } else { print("Not switching scene!") }
     }
 }
