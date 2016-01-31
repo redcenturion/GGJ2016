@@ -57,7 +57,46 @@ class GameplayScene: SKScene {
         // Add to the scene
         world.addChild(hill_1)
         world.addChild(hill_2)
-
+        
+        let cyanOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 255, b: 255)
+        cyanOrb.position = CGPointMake(100, 200)
+        cyanOrb.name = "CyanOrb"
+        world.addChild(cyanOrb)
+        
+        let redOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
+        redOrb.position = CGPointMake(150, 200)
+        redOrb.name = "RedOrb"
+        world.addChild(redOrb)
+        
+        let blackOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 0 , b: 0)
+        blackOrb.position = CGPointMake(200, 200)
+        blackOrb.name = "BlackOrb"
+        world.addChild(blackOrb)
+        
+        let yellowOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 255, b: 0)
+        yellowOrb.position = CGPointMake(250, 200)
+        yellowOrb.name = "YellowOrb"
+        world.addChild(yellowOrb)
+        
+        let greenOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
+        greenOrb.position = CGPointMake(300, 200)
+        greenOrb.name = "GreenOrb"
+        world.addChild(greenOrb)
+        
+        let blueOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
+        blueOrb.position = CGPointMake(350, 200)
+        blueOrb.name = "BlueOrb"
+        world.addChild(blueOrb)
+        
+        let purpleOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 0, b: 255)
+        purpleOrb.position = CGPointMake(400, 200)
+        purpleOrb.name = "PurpleOrb"
+        world.addChild(purpleOrb)
+        
+        let whiteOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 255, b: 255)
+        whiteOrb.position = CGPointMake(450, 200)
+        whiteOrb.name = "WhiteOrb"
+        world.addChild(whiteOrb)
     }
     
     private func setupPlayer() {
@@ -69,7 +108,7 @@ class GameplayScene: SKScene {
             player.setScale(0.4)
             player.zPosition = 10
             print("Player position is \(player.position)")
-            world.addChild(player)
+            self.addChild(player)
         } else { print("Player not loaded") }
     }
     
@@ -81,6 +120,15 @@ class GameplayScene: SKScene {
         spriteNode.anchorPoint = CGPointMake(0.5,0.5)
        
         return spriteNode
+    }
+    
+    private func createOrbWithColorValues(r red: CGFloat, g green: CGFloat, b blue: CGFloat, a alpha: CGFloat = 1) -> SKShapeNode {
+        let orb = SKShapeNode(circleOfRadius: 30)
+        orb.fillColor = SKColor(red: red, green: green, blue: blue, alpha: alpha)
+        orb.strokeColor = SKColor(red: red, green: green, blue: blue, alpha: alpha)
+        orb.glowWidth = 10.0
+        
+        return orb
     }
     
     // MARK: Player
@@ -103,7 +151,6 @@ class GameplayScene: SKScene {
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let touch = touches.first else { return }
-        
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -114,7 +161,6 @@ class GameplayScene: SKScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
-//        print("Update being called")
         guard let player = player else { return }
        
         // Ensure only run when player has finger on screen
