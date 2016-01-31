@@ -171,56 +171,72 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                 if let cyanOrb = cyanOrb {
                     cyanOrb.zPosition = counter
                     cyanOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_1", color: "Cyan")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_1", color: "Cyan")
+                    })
                 }
                 break
             case 2:
                 if let redOrb = redOrb {
                     redOrb.zPosition = counter
                     redOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_2", color: "Red")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_2", color: "Red")
+                    })
                 }
                 break
             case 3:
                 if let blackOrb = blackOrb {
                     blackOrb.zPosition = counter
                     blackOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_3", color: "Black")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_3", color: "Black")
+                    })
                 }
                 break
             case 4:
                 if let yellowOrb = yellowOrb {
                     yellowOrb.zPosition = counter
                     yellowOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_4", color: "Yellow")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_4", color: "Yellow")
+                    })
                 }
                 break
             case 5:
                 if let greenOrb = greenOrb {
                     greenOrb.zPosition = counter
                     greenOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_5", color: "Green")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_5", color: "Green")
+                    })
                 }
                 break
             case 6:
                 if let blueOrb = blueOrb {
                     blueOrb.zPosition = counter
                     blueOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_6", color: "Blue")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_6", color: "Blue")
+                    })
                 }
                 break
             case 7:
                 if let purpleOrb = purpleOrb {
                     purpleOrb.zPosition = counter
                     purpleOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_7", color: "Purple")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_7", color: "Purple")
+                    })
                 }
                 break
             case 8:
                 if let whiteOrb = whiteOrb {
                     whiteOrb.zPosition = counter
                     whiteOrb.runAction(sequence)
-                    self.playSound("SXF_Orb_1", color: "White")
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                        self.playSound("SXF_Orb_1", color: "White")
+                    })
                 }
                 break
             default:
