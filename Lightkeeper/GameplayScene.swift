@@ -15,8 +15,25 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     // MARK: Variables
     private let world: SKNode = SKNode()
     private var player: SKSpriteNode?
-    private var audioPlayer: AVAudioPlayer?
+    private var orbPlayer_Cyan: AVAudioPlayer?
+    private var orbPlayer_Red: AVAudioPlayer?
+    private var orbPlayer_Black: AVAudioPlayer?
+    private var orbPlayer_Yellow: AVAudioPlayer?
+    private var orbPlayer_Green: AVAudioPlayer?
+    private var orbPlayer_Blue: AVAudioPlayer?
+    private var orbPlayer_Purple: AVAudioPlayer?
+    private var orbPlayer_White: AVAudioPlayer?
     private var bgmPlayer: AVAudioPlayer?
+    
+    // Orbs
+    private var cyanOrb: SKShapeNode?
+    private var redOrb: SKShapeNode?
+    private var blackOrb: SKShapeNode?
+    private var yellowOrb: SKShapeNode?
+    private var greenOrb: SKShapeNode?
+    private var blueOrb: SKShapeNode?
+    private var purpleOrb: SKShapeNode?
+    private var whiteOrb: SKShapeNode?
    
     // Constants
     private let MIDSCREEN: CGPoint = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
@@ -32,8 +49,16 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     // MARK: Lifecycle
     override func didMoveToView(view: SKView) {
         print("We are now in the gameplay scene")
-        
-        audioPlayer = AVAudioPlayer()
+       
+        // Set up AVPlayers
+        orbPlayer_Cyan = AVAudioPlayer()
+        orbPlayer_Red = AVAudioPlayer()
+        orbPlayer_Black = AVAudioPlayer()
+        orbPlayer_Yellow = AVAudioPlayer()
+        orbPlayer_Green = AVAudioPlayer()
+        orbPlayer_Blue = AVAudioPlayer()
+        orbPlayer_Purple = AVAudioPlayer()
+        orbPlayer_White = AVAudioPlayer()
         bgmPlayer = AVAudioPlayer()
        
         // Setup
@@ -68,46 +93,64 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         world.addChild(hill_1)
         world.addChild(hill_2)
         
-        let cyanOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 255, b: 255)
-        cyanOrb.position = CGPointMake(100, 200)
-        cyanOrb.name = "CyanOrb"
-        world.addChild(cyanOrb)
+        cyanOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 255)
+        if let cyanOrb = cyanOrb {
+            cyanOrb.position = CGPointMake(100, 200)
+            cyanOrb.name = "CyanOrb"
+            print("Cyan Orb frame: \(cyanOrb.frame)")
+            world.addChild(cyanOrb)
+        }
         
-        let redOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
-        redOrb.position = CGPointMake(150, 200)
-        redOrb.name = "RedOrb"
-        world.addChild(redOrb)
+        redOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
+            if let redOrb = redOrb {
+            redOrb.position = CGPointMake(150, 200)
+            print("Red Orb frame: \(redOrb.frame)")
+            redOrb.name = "RedOrb"
+            world.addChild(redOrb)
+        }
         
-        let blackOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 0 , b: 0)
-        blackOrb.position = CGPointMake(200, 200)
-        blackOrb.name = "BlackOrb"
-        world.addChild(blackOrb)
+        blackOrb = self.createOrbWithColorValues(r: 0, g: 0 , b: 0)
+            if let blackOrb = blackOrb {
+            blackOrb.position = CGPointMake(200, 200)
+            blackOrb.name = "BlackOrb"
+            world.addChild(blackOrb)
+        }
         
-        let yellowOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 255, b: 0)
-        yellowOrb.position = CGPointMake(250, 200)
-        yellowOrb.name = "YellowOrb"
-        world.addChild(yellowOrb)
+        yellowOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 0)
+            if let yellowOrb = yellowOrb {
+            yellowOrb.position = CGPointMake(250, 200)
+            yellowOrb.name = "YellowOrb"
+            world.addChild(yellowOrb)
+        }
         
-        let greenOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
-        greenOrb.position = CGPointMake(300, 200)
-        greenOrb.name = "GreenOrb"
-        greenOrb.runAction(SKAction.scaleBy(5, duration: 2.0))
-        world.addChild(greenOrb)
+        greenOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
+            if let greenOrb = greenOrb {
+            greenOrb.position = CGPointMake(300, 200)
+            greenOrb.name = "GreenOrb"
+    //        greenOrb.runAction(SKAction.scaleBy(5, duration: 2.0))
+            world.addChild(greenOrb)
+        }
         
-        let blueOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
-        blueOrb.position = CGPointMake(350, 200)
-        blueOrb.name = "BlueOrb"
-        world.addChild(blueOrb)
+        blueOrb = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
+            if let blueOrb = blueOrb {
+            blueOrb.position = CGPointMake(350, 200)
+            blueOrb.name = "BlueOrb"
+            world.addChild(blueOrb)
+        }
         
-        let purpleOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 0, b: 255)
-        purpleOrb.position = CGPointMake(400, 200)
-        purpleOrb.name = "PurpleOrb"
-        world.addChild(purpleOrb)
+        purpleOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 255)
+            if let purpleOrb = purpleOrb {
+            purpleOrb.position = CGPointMake(400, 200)
+            purpleOrb.name = "PurpleOrb"
+            world.addChild(purpleOrb)
+        }
         
-        let whiteOrb: SKShapeNode = self.createOrbWithColorValues(r: 255, g: 255, b: 255)
-        whiteOrb.position = CGPointMake(450, 200)
-        whiteOrb.name = "WhiteOrb"
-        world.addChild(whiteOrb)
+        whiteOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 255)
+        if let whiteOrb = whiteOrb {
+            whiteOrb.position = CGPointMake(450, 200)
+            whiteOrb.name = "WhiteOrb"
+            world.addChild(whiteOrb)
+        }
     }
     
     private func setupPlayer() {
@@ -164,7 +207,69 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         print("The touch position is \(touchPosition)")
         playerShouldMove = true
         movePlayerToTouchPosition(location: touchPosition)
-        self.playSound("SXF_Orb_1")
+        
+        // Play sound on touch location
+        let rand = Int(arc4random_uniform(8))
+        switch rand {
+        case 0:
+//            if let cyanOrb = cyanOrb {
+//                if CGRectContainsPoint(cyanOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_1", color: "Cyan")
+//                }
+//            }
+            break
+        case 1:
+//            if let redOrb = redOrb {
+//                if CGRectContainsPoint(redOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_2", color: "Red")
+//                }
+//            }
+            break
+        case 2:
+//            if let blackOrb = blackOrb {
+//                if CGRectContainsPoint(blackOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_3", color: "Black")
+//                }
+//            }
+            break
+        case 3:
+//            if let yellowOrb = yellowOrb {
+//                if CGRectContainsPoint(yellowOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_4", color: "Yellow")
+//                }
+//            }
+            break
+        case 4:
+//            if let greenOrb = greenOrb {
+//                if CGRectContainsPoint(greenOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_5", color: "Green")
+//                }
+//            }
+            break
+        case 5:
+//            if let blueOrb = blueOrb {
+//                if CGRectContainsPoint(blueOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_6", color: "Blue")
+//                }
+//            }
+            break
+        case 6:
+//            if let purpleOrb = purpleOrb {
+//                if CGRectContainsPoint(purpleOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_7", color: "Purple")
+//                }
+//            }
+            break
+        case 7:
+//            if let whiteOrb = whiteOrb {
+//                if CGRectContainsPoint(whiteOrb.frame, touchPosition) {
+                    self.playSound("SXF_Orb_1", color: "White")
+//                }
+//            }
+            break
+        default:
+            break
+        }
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -198,19 +303,80 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     }
     
     // MARK: Sounds
-    // How to play sounds
-    // http://stackoverflow.com/questions/24393495/playing-a-sound-with-avaudioplayer
-    private func playSound(soundName: String) {
+    private func playSound(soundName: String, color: String) {
         let path = NSBundle.mainBundle().pathForResource(soundName, ofType: "m4a")
         if let path = path {
         do {
-                let nsurl = NSURL(fileURLWithPath: path)
-                audioPlayer = try AVAudioPlayer(contentsOfURL:nsurl)
-                if let audioPlayer = audioPlayer {
-                    audioPlayer.prepareToPlay()
-                    audioPlayer.delegate = self
-                    audioPlayer.play()
-                }
+            let nsurl = NSURL(fileURLWithPath: path)
+            switch color {
+                case "Cyan":
+                    orbPlayer_Cyan = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Cyan {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "Red":
+                    orbPlayer_Red = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Red {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "Black":
+                    orbPlayer_Black = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Black {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "Yellow":
+                    orbPlayer_Yellow = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Yellow {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "Green":
+                    orbPlayer_Green = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Green {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "Blue":
+                    orbPlayer_Blue = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Blue {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "Purple":
+                    orbPlayer_Purple = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_Purple {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                case "White":
+                    orbPlayer_White = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let player = orbPlayer_White {
+                        player.prepareToPlay()
+                        player.delegate = self
+                        player.play()
+                    }
+                    break
+                default:
+                    break
+            }
+            
             } catch { print("Error getting the audio file") }
         } else { print("Not playing anything!") }
     }
