@@ -64,10 +64,10 @@
 			children = (
 				3F0ED4181C5D4C620005251E /* sprites.atlas */,
 				3F0ED4141C5D41960005251E /* GameplayViewController.swift */,
+				3F0ED4121C5D41490005251E /* GameplayScene.swift */,
 				D0D6F6671C5C7C500065AE1C /* AppDelegate.swift */,
 				D0D6F69F1C5D3F840065AE1C /* MainMenuScene.swift */,
 				3FC0C9AF1C5D59080082A0FA /* MainMenuViewController.swift */,
-				3F0ED4121C5D41490005251E /* GameplayScene.swift */,
 				D0D6F6721C5C7C500065AE1C /* Assets.xcassets */,
 				D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */,
 				D0D6F6771C5C7C500065AE1C /* Info.plist */,
