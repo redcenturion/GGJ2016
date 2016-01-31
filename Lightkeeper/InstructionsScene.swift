@@ -24,6 +24,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     private var orbPlayer_White: AVAudioPlayer?
     
     // Orbs
+    private var orbArray: NSMutableArray?
     private var cyanOrb: SKShapeNode?
     private var redOrb: SKShapeNode?
     private var blackOrb: SKShapeNode?
@@ -70,60 +71,66 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     private func setupOrbs() {
         cyanOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 255)
         if let cyanOrb = cyanOrb {
-            cyanOrb.position = CGPointMake(MIDSCREEN.x - 0, MIDSCREEN.y - 0)
+            cyanOrb.position = CGPointMake(MIDSCREEN.x, MIDSCREEN.y)
             cyanOrb.name = "CyanOrb"
-            print("Cyan Orb frame: \(cyanOrb.frame)")
+            cyanOrb.setScale(0)
             world.addChild(cyanOrb)
         }
         
         redOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
         if let redOrb = redOrb {
-            redOrb.position = CGPointMake(150, 200)
+            redOrb.position = CGPointMake(MIDSCREEN.x - 100, MIDSCREEN.y - 100)
             print("Red Orb frame: \(redOrb.frame)")
             redOrb.name = "RedOrb"
+            redOrb.setScale(0)
             world.addChild(redOrb)
         }
         
         blackOrb = self.createOrbWithColorValues(r: 0, g: 0 , b: 0)
         if let blackOrb = blackOrb {
-            blackOrb.position = CGPointMake(200, 200)
+            blackOrb.position = CGPointMake(MIDSCREEN.x - 150, MIDSCREEN.y + 100)
             blackOrb.name = "BlackOrb"
+            blackOrb.setScale(0)
             world.addChild(blackOrb)
         }
         
         yellowOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 0)
         if let yellowOrb = yellowOrb {
-            yellowOrb.position = CGPointMake(250, 200)
+            yellowOrb.position = CGPointMake(MIDSCREEN.x - 180, MIDSCREEN.y - 80)
             yellowOrb.name = "YellowOrb"
+            yellowOrb.setScale(0)
             world.addChild(yellowOrb)
         }
         
         greenOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
         if let greenOrb = greenOrb {
-            greenOrb.position = CGPointMake(300, 200)
+            greenOrb.position = CGPointMake(MIDSCREEN.x + 150, MIDSCREEN.y + 120)
             greenOrb.name = "GreenOrb"
-            //        greenOrb.runAction(SKAction.scaleBy(5, duration: 2.0))
+            greenOrb.setScale(0)
             world.addChild(greenOrb)
         }
         
         blueOrb = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
         if let blueOrb = blueOrb {
-            blueOrb.position = CGPointMake(350, 200)
+            blueOrb.position = CGPointMake(MIDSCREEN.x - 200, MIDSCREEN.y - 200)
             blueOrb.name = "BlueOrb"
+            blueOrb.setScale(0)
             world.addChild(blueOrb)
         }
         
         purpleOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 255)
         if let purpleOrb = purpleOrb {
-            purpleOrb.position = CGPointMake(400, 200)
+            purpleOrb.position = CGPointMake(MIDSCREEN.x + 200, MIDSCREEN.y + 200)
             purpleOrb.name = "PurpleOrb"
+            purpleOrb.setScale(0)
             world.addChild(purpleOrb)
         }
         
         whiteOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 255)
         if let whiteOrb = whiteOrb {
-            whiteOrb.position = CGPointMake(450, 200)
+            whiteOrb.position = CGPointMake(MIDSCREEN.x + 250, MIDSCREEN.y - 180)
             whiteOrb.name = "WhiteOrb"
+            whiteOrb.setScale(0)
             world.addChild(whiteOrb)
         }
     }
@@ -144,70 +151,83 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     }
    
     private func playOrbInRandomOrder() {
-        let array = NSMutableArray()
+        orbArray = NSMutableArray()
+        guard let orbArray = orbArray else { return }
         for element in 1...8 {
-            array.addObject(element)
+            orbArray.addObject(element)
         }
-        let count = array.count - 1
+        let count = orbArray.count - 1
         for element in 0...count {
             let remainingCount:Int = count - element
             let exchangeIndex: Int = element + Int(arc4random_uniform(UInt32(remainingCount)))
-            array.exchangeObjectAtIndex(count, withObjectAtIndex: exchangeIndex)
+            orbArray.exchangeObjectAtIndex(count, withObjectAtIndex: exchangeIndex)
         }
-        
-        for element in array {
+        var delay: Double = 0
+        var counter: CGFloat = 0
+        for element in orbArray {
+            var sequence = SKAction.sequence([SKAction.waitForDuration(delay), SKAction.scaleTo(5, duration: 1.0)])
             switch element.intValue {
-            case 0:
+            case 1:
                 if let cyanOrb = cyanOrb {
-                    cyanOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    cyanOrb.zPosition = counter
+                    cyanOrb.runAction(sequence)
                     self.playSound("SXF_Orb_1", color: "Cyan")
                 }
                 break
-            case 1:
+            case 2:
                 if let redOrb = redOrb {
-                    redOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    redOrb.zPosition = counter
+                    redOrb.runAction(sequence)
                     self.playSound("SXF_Orb_2", color: "Red")
                 }
                 break
-            case 2:
+            case 3:
                 if let blackOrb = blackOrb {
-                    blackOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    blackOrb.zPosition = counter
+                    blackOrb.runAction(sequence)
                     self.playSound("SXF_Orb_3", color: "Black")
                 }
                 break
-            case 3:
+            case 4:
                 if let yellowOrb = yellowOrb {
-                    yellowOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    yellowOrb.zPosition = counter
+                    yellowOrb.runAction(sequence)
                     self.playSound("SXF_Orb_4", color: "Yellow")
                 }
                 break
-            case 4:
+            case 5:
                 if let greenOrb = greenOrb {
-                    greenOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    greenOrb.zPosition = counter
+                    greenOrb.runAction(sequence)
                     self.playSound("SXF_Orb_5", color: "Green")
                 }
                 break
-            case 5:
+            case 6:
                 if let blueOrb = blueOrb {
-                    blueOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    blueOrb.zPosition = counter
+                    blueOrb.runAction(sequence)
                     self.playSound("SXF_Orb_6", color: "Blue")
                 }
                 break
-            case 6:
+            case 7:
                 if let purpleOrb = purpleOrb {
-                    purpleOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    purpleOrb.zPosition = counter
+                    purpleOrb.runAction(sequence)
                     self.playSound("SXF_Orb_7", color: "Purple")
                 }
                 break
-            case 7:
+            case 8:
                 if let whiteOrb = whiteOrb {
-                    whiteOrb.runAction(SKAction.scaleTo(5, duration: 1.0))
+                    whiteOrb.zPosition = counter
+                    whiteOrb.runAction(sequence)
                     self.playSound("SXF_Orb_1", color: "White")
                 }
                 break
             default:
                 break
             }
+            delay += 1
+            counter += 1
         }
     }
     
