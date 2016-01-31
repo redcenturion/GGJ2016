@@ -12,6 +12,10 @@
 		3F0ED4191C5D4C620005251E /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED4181C5D4C620005251E /* sprites.atlas */; };
 		3FC0C9B01C5D59080082A0FA /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0C9AF1C5D59080082A0FA /* MainMenuViewController.swift */; };
 		3FF4C9E21C5D5D7E00871BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF4C9E11C5D5D7E00871BA7 /* Main.storyboard */; };
+		D0C70E3C1C5D8FBF005F715E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C70E3A1C5D8FBF005F715E /* spark.png */; };
+		D0C70E3E1C5D905E005F715E /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0C70E3D1C5D905E005F715E /* Rain.sks */; };
+		D0C70E401C5D9188005F715E /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0C70E3F1C5D9188005F715E /* Smoke.sks */; };
+		D0C70E421C5D94A9005F715E /* greenMagic.sks in Resources */ = {isa = PBXBuildFile; fileRef = D0C70E411C5D94A9005F715E /* greenMagic.sks */; };
 		D0D6F6681C5C7C500065AE1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6F6671C5C7C500065AE1C /* AppDelegate.swift */; };
 		D0D6F6731C5C7C500065AE1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D6F6721C5C7C500065AE1C /* Assets.xcassets */; };
 		D0D6F6761C5C7C500065AE1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */; };
@@ -24,6 +28,10 @@
 		3F0ED4181C5D4C620005251E /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		3FC0C9AF1C5D59080082A0FA /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3FF4C9E11C5D5D7E00871BA7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D0C70E3A1C5D8FBF005F715E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		D0C70E3D1C5D905E005F715E /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
+		D0C70E3F1C5D9188005F715E /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
+		D0C70E411C5D94A9005F715E /* greenMagic.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = greenMagic.sks; sourceTree = "<group>"; };
 		D0D6F6641C5C7C500065AE1C /* Lightkeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lightkeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D6F6671C5C7C500065AE1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D6F6721C5C7C500065AE1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +80,10 @@
 				D0D6F6741C5C7C500065AE1C /* LaunchScreen.storyboard */,
 				D0D6F6771C5C7C500065AE1C /* Info.plist */,
 				3FF4C9E11C5D5D7E00871BA7 /* Main.storyboard */,
+				D0C70E3A1C5D8FBF005F715E /* spark.png */,
+				D0C70E3D1C5D905E005F715E /* Rain.sks */,
+				D0C70E3F1C5D9188005F715E /* Smoke.sks */,
+				D0C70E411C5D94A9005F715E /* greenMagic.sks */,
 			);
 			path = Lightkeeper;
 			sourceTree = "<group>";
@@ -108,6 +120,7 @@
 				TargetAttributes = {
 					D0D6F6631C5C7C500065AE1C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9Y3C2M96GL;
 					};
 				};
 			};
@@ -135,9 +148,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D6F6761C5C7C500065AE1C /* LaunchScreen.storyboard in Resources */,
+				D0C70E3C1C5D8FBF005F715E /* spark.png in Resources */,
+				D0C70E3E1C5D905E005F715E /* Rain.sks in Resources */,
 				3F0ED4191C5D4C620005251E /* sprites.atlas in Resources */,
 				D0D6F6731C5C7C500065AE1C /* Assets.xcassets in Resources */,
 				3FF4C9E21C5D5D7E00871BA7 /* Main.storyboard in Resources */,
+				D0C70E401C5D9188005F715E /* Smoke.sks in Resources */,
+				D0C70E421C5D94A9005F715E /* greenMagic.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +278,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016ZZ.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -275,7 +292,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016ZZ.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
