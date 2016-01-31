@@ -24,6 +24,7 @@ class MainMenuScene: SKScene {
         setupUI()
         setupPlayButton()
         setupAboutButton()
+        setupBackgroundEffect()
     }
     
     // MARK: UI Elements
@@ -32,6 +33,16 @@ class MainMenuScene: SKScene {
         title.zPosition = 1
         title.position = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 1.5)
         self.addChild(title)
+    }
+    private func setupBackgroundEffect() {
+        let path = NSBundle.mainBundle().pathForResource("greenMagic", ofType: "sks")
+        let greenMagicParticle = NSKeyedUnarchiver.unarchiveObjectWithFile(path!) as! SKEmitterNode
+        
+        greenMagicParticle.position = CGPointMake(self.size.width/2, self.size.height)
+        greenMagicParticle.name = "greenMagicParticle"
+        greenMagicParticle.targetNode = self.scene
+        
+        self.addChild(greenMagicParticle)
     }
     
     private func setupPlayButton() {
@@ -72,10 +83,9 @@ class MainMenuScene: SKScene {
             self.addChild(aboutButton)
         } else { print("something went wrong!") }
         
-    }
+            }
     
-    NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"greenMagic" ofType:@"sks"];
-    SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];    }
+
     
    
-
+}
