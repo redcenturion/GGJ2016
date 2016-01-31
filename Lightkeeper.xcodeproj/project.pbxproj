@@ -64,6 +64,9 @@
 		3F3093681C5DE5AF00388EDB /* Music_Gameplay_3_loop.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music_Gameplay_3_loop.m4a; sourceTree = "<group>"; };
 		3F3093691C5DE5AF00388EDB /* Music_Gameplay_4_loop.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music_Gameplay_4_loop.m4a; sourceTree = "<group>"; };
 		3F3093721C5DF92B00388EDB /* InstructionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsScene.swift; sourceTree = "<group>"; };
+		3F3093741C5E961000388EDB /* Music_Main_Theme.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music_Main_Theme.m4a; sourceTree = "<group>"; };
+		3F3093751C5E961000388EDB /* Music_Win.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music_Win.m4a; sourceTree = "<group>"; };
+		3F3093761C5E961000388EDB /* Music_Lose.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Music_Lose.m4a; sourceTree = "<group>"; };
 		3FC0C9AF1C5D59080082A0FA /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3FF4C9E11C5D5D7E00871BA7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D0C70E3A1C5D8FBF005F715E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -113,6 +116,9 @@
 		3F3093651C5DE5AF00388EDB /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				3F3093741C5E961000388EDB /* Music_Main_Theme.m4a */,
+				3F3093751C5E961000388EDB /* Music_Win.m4a */,
+				3F3093761C5E961000388EDB /* Music_Lose.m4a */,
 				3F3093661C5DE5AF00388EDB /* Music_Gameplay_1_loop.m4a */,
 				3F3093671C5DE5AF00388EDB /* Music_Gameplay_2_loop.m4a */,
 				3F3093681C5DE5AF00388EDB /* Music_Gameplay_3_loop.m4a */,

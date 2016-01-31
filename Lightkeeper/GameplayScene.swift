@@ -28,6 +28,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private var bgmPlayer_2: AVAudioPlayer?
     private var bgmPlayer_3: AVAudioPlayer?
     private var bgmPlayer_4: AVAudioPlayer?
+    private var completitionPlayer: AVAudioPlayer?
     
     // Orbs
     private var cyanOrb: SKShapeNode?
@@ -92,17 +93,16 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     }
     private func setupBackground() {
         print("Setting up the background")
-        self.backgroundColor = SKColor.grayColor()
+        self.backgroundColor = SKColor.lightGrayColor()
         
-        // Get the hill textures
-        let hill_1 = self.createSpriteFromAtlas(name: "hills1")
-        hill_1.zPosition = -1
-        hill_1.position = CGPointMake(0, UIScreen.mainScreen().bounds.size.height / 3)
-        print("Hill_1 position = \(hill_1.position)")
+        // Mountain
+        let mountain_1 = self.createSpriteFromAtlas(name: "pointy_mountains")
+        mountain_1.zPosition = -1
+        mountain_1.position = CGPointMake(MIDSCREEN.x + 40, MIDSCREEN.y - 10)
         
-        let hill_2 = self.createSpriteFromAtlas(name: "hills2")
-        hill_2.zPosition = -2
-        hill_2.position = CGPointMake(hill_1.position.x + hill_1.size.width, hill_1.position.y)
+        let mountain_2 = self.createSpriteFromAtlas(name: "pointy_mountains")
+        mountain_2.zPosition = -2
+        mountain_2.position = CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 30)
         
         // Get cloud texture
         let cloud = self.createSpriteFromAtlas(name: "clouds2")
@@ -115,6 +115,12 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         shrine.setScale(0.5)
         shrine.position = CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 100)
         
+        // Tiki
+        let tiki = self.createSpriteFromAtlas(name: "Tiki")
+        tiki.zPosition = 8
+        tiki.setScale(0.1)
+        tiki.position = CGPointMake(MIDSCREEN.x - 100, MIDSCREEN.y - 120)
+        
         // Sun
         sun = self.createSpriteFromAtlas(name: "sun")
         if let sun = sun {
@@ -124,10 +130,11 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         }
         
         // Add to the scene
-        world.addChild(hill_1)
-        world.addChild(hill_2)
+        world.addChild(mountain_1)
+        world.addChild(mountain_2)
         world.addChild(cloud)
         world.addChild(shrine)
+        world.addChild(tiki)
     }
     
     private func setupLayers() {
@@ -173,7 +180,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private func setupOrbs() {
         cyanOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 255)
         if let cyanOrb = cyanOrb {
-            cyanOrb.position = CGPointMake(100, 200)
+            cyanOrb.position = CGPointMake(200, 250)
             cyanOrb.name = "CyanOrb"
             print("Cyan Orb frame: \(cyanOrb.frame)")
             world.addChild(cyanOrb)
@@ -181,7 +188,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         redOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
         if let redOrb = redOrb {
-            redOrb.position = CGPointMake(150, 200)
+            redOrb.position = CGPointMake(250, 250)
             print("Red Orb frame: \(redOrb.frame)")
             redOrb.name = "RedOrb"
             world.addChild(redOrb)
@@ -189,42 +196,42 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         blackOrb = self.createOrbWithColorValues(r: 0, g: 0 , b: 0)
         if let blackOrb = blackOrb {
-            blackOrb.position = CGPointMake(200, 200)
+            blackOrb.position = CGPointMake(300, 250)
             blackOrb.name = "BlackOrb"
             world.addChild(blackOrb)
         }
         
         yellowOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 0)
         if let yellowOrb = yellowOrb {
-            yellowOrb.position = CGPointMake(250, 200)
+            yellowOrb.position = CGPointMake(350, 250)
             yellowOrb.name = "YellowOrb"
             world.addChild(yellowOrb)
         }
         
         greenOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
         if let greenOrb = greenOrb {
-            greenOrb.position = CGPointMake(300, 200)
+            greenOrb.position = CGPointMake(400, 250)
             greenOrb.name = "GreenOrb"
             world.addChild(greenOrb)
         }
         
         blueOrb = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
         if let blueOrb = blueOrb {
-            blueOrb.position = CGPointMake(350, 200)
+            blueOrb.position = CGPointMake(450, 250)
             blueOrb.name = "BlueOrb"
             world.addChild(blueOrb)
         }
         
         purpleOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 255)
         if let purpleOrb = purpleOrb {
-            purpleOrb.position = CGPointMake(400, 200)
+            purpleOrb.position = CGPointMake(500, 250)
             purpleOrb.name = "PurpleOrb"
             world.addChild(purpleOrb)
         }
         
         whiteOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 255)
         if let whiteOrb = whiteOrb {
-            whiteOrb.position = CGPointMake(450, 200)
+            whiteOrb.position = CGPointMake(550, 250)
             whiteOrb.name = "WhiteOrb"
             world.addChild(whiteOrb)
         }
@@ -518,6 +525,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                     if let audioPlayer = bgmPlayer_1 {
                         audioPlayer.prepareToPlay()
                         audioPlayer.delegate = self
+                        audioPlayer.numberOfLoops = -1
                         audioPlayer.play()
                     }
                     break
@@ -526,6 +534,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                     if let audioPlayer = bgmPlayer_2 {
                         audioPlayer.prepareToPlay()
                         audioPlayer.delegate = self
+                        audioPlayer.numberOfLoops = -1
                         audioPlayer.play()
                     }
                     break
@@ -534,6 +543,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                     if let audioPlayer = bgmPlayer_3 {
                         audioPlayer.prepareToPlay()
                         audioPlayer.delegate = self
+                        audioPlayer.numberOfLoops = -1
                         audioPlayer.play()
                     }
                     break
@@ -542,6 +552,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                 if let audioPlayer = bgmPlayer_4 {
                     audioPlayer.prepareToPlay()
                     audioPlayer.delegate = self
+                    audioPlayer.numberOfLoops = -1
                     audioPlayer.play()
                 }
                     break

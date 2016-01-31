@@ -72,7 +72,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     }
     private func setupBackground() {
         print("Setting up the background")
-        self.backgroundColor = SKColor.grayColor()
+        self.backgroundColor = SKColor.lightGrayColor()
     }
     
     private func setupOrbs() {
