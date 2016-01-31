@@ -59,6 +59,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private var secondLayer: SKShapeNode?
     private var thirdLayer: SKShapeNode?
     private var fourthLayer: SKShapeNode?
+    private var fifthLayer: SKShapeNode?
     
     // Fade BGM
     private var shouldFadegBgmPlayer_Out_1: Bool = false
@@ -178,6 +179,10 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let fourthLayer = fourthLayer {
             world.addChild(fourthLayer)
         }
+        fifthLayer = self.createColorLayerWithUIColor(UIColor.whiteColor())
+        if let fifthLayer = fifthLayer {
+            world.addChild(fifthLayer)
+        }
     }
     
     private func setupPlayer() {
@@ -204,7 +209,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private func setupOrbs() {
         cyanOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 255)
         if let cyanOrb = cyanOrb {
-            cyanOrb.position = CGPointMake(200, 250)
+            cyanOrb.position = CGPointMake(200, 220)
             cyanOrb.name = "CyanOrb"
             orbRect_Cyan = CGRectMake(cyanOrb.position.x, cyanOrb.position.y, 40, 40)
             print("Cyan Orb frame: \(cyanOrb.frame)")
@@ -213,7 +218,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         redOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
         if let redOrb = redOrb {
-            redOrb.position = CGPointMake(250, 250)
+            redOrb.position = CGPointMake(250, 280)
             orbRect_Red = CGRectMake(redOrb.position.x, redOrb.position.y, 40, 40)
             print("Red Orb frame: \(redOrb.frame)")
             redOrb.name = "RedOrb"
@@ -222,7 +227,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         blackOrb = self.createOrbWithColorValues(r: 0, g: 0 , b: 0)
         if let blackOrb = blackOrb {
-            blackOrb.position = CGPointMake(300, 250)
+            blackOrb.position = CGPointMake(300, 220)
             blackOrb.name = "BlackOrb"
             orbRect_Black = CGRectMake(blackOrb.position.x, blackOrb.position.y, 40, 40)
             world.addChild(blackOrb)
@@ -230,7 +235,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         yellowOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 0)
         if let yellowOrb = yellowOrb {
-            yellowOrb.position = CGPointMake(350, 250)
+            yellowOrb.position = CGPointMake(350, 280)
             yellowOrb.name = "YellowOrb"
             orbRect_Yellow = CGRectMake(yellowOrb.position.x, yellowOrb.position.y, 40, 40)
             world.addChild(yellowOrb)
@@ -238,7 +243,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         greenOrb = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
         if let greenOrb = greenOrb {
-            greenOrb.position = CGPointMake(400, 250)
+            greenOrb.position = CGPointMake(400, 220)
             greenOrb.name = "GreenOrb"
             orbRect_Green = CGRectMake(greenOrb.position.x, greenOrb.position.y, 40, 40)
             world.addChild(greenOrb)
@@ -246,7 +251,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         blueOrb = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
         if let blueOrb = blueOrb {
-            blueOrb.position = CGPointMake(450, 250)
+            blueOrb.position = CGPointMake(450, 280)
             blueOrb.name = "BlueOrb"
             orbRect_Blue = CGRectMake(blueOrb.position.x, blueOrb.position.y, 40, 40)
             world.addChild(blueOrb)
@@ -254,7 +259,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         purpleOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 255)
         if let purpleOrb = purpleOrb {
-            purpleOrb.position = CGPointMake(500, 250)
+            purpleOrb.position = CGPointMake(500, 220)
             purpleOrb.name = "PurpleOrb"
             orbRect_Purple = CGRectMake(purpleOrb.position.x, purpleOrb.position.y, 40, 40)
             world.addChild(purpleOrb)
@@ -262,7 +267,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         
         whiteOrb = self.createOrbWithColorValues(r: 255, g: 255, b: 255)
         if let whiteOrb = whiteOrb {
-            whiteOrb.position = CGPointMake(550, 250)
+            whiteOrb.position = CGPointMake(550, 280)
             whiteOrb.name = "WhiteOrb"
             orbRect_White = CGRectMake(whiteOrb.position.x, whiteOrb.position.y, 40, 40)
             world.addChild(whiteOrb)
@@ -330,6 +335,17 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
             shouldFadegBgmPlayer_In_4 = true
             shouldFadegBgmPlayer_Out_3 = true
             break
+        case 8:
+            shouldFadegBgmPlayer_Out_4 = true
+            fifthLayer?.hidden = false
+            fourthLayer?.runAction(SKAction.fadeAlphaTo(0, duration: 3.0))
+            fifthLayer?.runAction(SKAction.fadeAlphaTo(1.0, duration: 3.0))
+            self.playSound("Music_Win", color: "")
+            if let scene = self.scene {
+                let gameplayScene = MainMenuScene(size: scene.size)
+                let transition = SKTransition.crossFadeWithDuration(3.0)
+                scene.view?.presentScene(gameplayScene, transition: transition)
+            } else { print("Not switching scene!") }
         default:
             break
         }
@@ -370,47 +386,54 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         }
         playerShouldMove = true
         movePlayerToTouchPosition(location: touchPosition)
-        orbCount++
         self.performActionBasedOnOrbCount()
         
         if let cyanOrb = cyanOrb {
                 if CGRectContainsPoint(orbRect_Cyan, touchPosition) {
                     cyanOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let redOrb = redOrb {
                 if CGRectContainsPoint(orbRect_Red, touchPosition) {
                     redOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let blackOrb = blackOrb {
                 if CGRectContainsPoint(orbRect_Black, touchPosition) {
                     blackOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let yellowOrb = yellowOrb {
                 if CGRectContainsPoint(orbRect_Yellow, touchPosition) {
                     yellowOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let greenOrb = greenOrb {
                 if CGRectContainsPoint(orbRect_Green, touchPosition) {
                     greenOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let blueOrb = blueOrb {
                 if CGRectContainsPoint(orbRect_Blue, touchPosition) {
                     blueOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let purpleOrb = purpleOrb {
                 if CGRectContainsPoint(orbRect_Blue, touchPosition) {
                     purpleOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
             if let whiteOrb = whiteOrb {
                 if CGRectContainsPoint(orbRect_White, touchPosition) {
                     whiteOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                    orbCount++
                 }
             }
     }

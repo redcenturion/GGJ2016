@@ -1,26 +1,25 @@
 //
-//  GameplayViewController.swift
+//  AboutViewController.swift
 //  Lightkeeper
 //
-//  Created by Steven Yang on 1/30/16.
+//  Created by Peter Huynh on 1/31/16.
 //  Copyright © 2016 GGJ2016. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
-class GameplayViewController: UIViewController {
+class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Setting up the SKView
-        print("GameplayView is loading")
+        print("About is loading")
         
-//        let scene: SKScene = GameplayScene(size: view.bounds.size)
-        let scene: SKScene = MainMenuScene(size: view.bounds.size)
+        let scene: SKScene = AboutScene(size: view.bounds.size)
         let skView = self.view as! SKView
-//        skView.showsFPS = true
-//        skView.showsNodeCount = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .ResizeFill
         skView.presentScene(scene)
@@ -47,5 +46,5 @@ class GameplayViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
+    
 }
