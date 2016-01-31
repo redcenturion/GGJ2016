@@ -16,7 +16,8 @@ class GameplayViewController: UIViewController {
         // Setting up the SKView
         print("GameplayView is loading")
         
-        let scene: SKScene = GameplayScene(size: view.bounds.size)
+//        let scene: SKScene = GameplayScene(size: view.bounds.size)
+        let scene: SKScene = InstructionsScene(size: view.bounds.size)
         let skView = self.view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
