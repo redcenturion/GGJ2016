@@ -45,6 +45,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private var distanceToMove: CGFloat = 0
     private var fingerOnScreenTime: Double = 0
     private var playerShouldMove: Bool = false
+    private var playerMovingRight: Bool = false
     
     // MARK: Lifecycle
     override func didMoveToView(view: SKView) {
@@ -207,6 +208,11 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         print("You are touching the screen!")
         touchPosition = touch.locationInNode(self)
         print("The touch position is \(touchPosition)")
+        if let player = player {
+            if touchPosition.x > player.position.x {
+               playerMovingRight = true
+            } else { playerMovingRight = false }
+        }
         playerShouldMove = true
         movePlayerToTouchPosition(location: touchPosition)
         
@@ -293,15 +299,18 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
             fingerOnScreenTime += 0.1
         } else { return }
         
-        if abs(distanceToMove) < 0.2 { return }
+        //if abs(distanceToMove) < 0.2 { return }
        
-        if distanceToMove >= 0 {
-            distanceToMove -= CGFloat(fingerOnScreenTime)
+//        if distanceToMove >= 0 {
+//            distanceToMove -= CGFloat(fingerOnScreenTime)
+//            player.position = CGPointMake(player.position.x + CGFloat(fingerOnScreenTime), player.position.y)
+//        } else if  distanceToMove < 0 {
+//            distanceToMove += CGFloat(fingerOnScreenTime)
+//            player.position = CGPointMake(player.position.x - CGFloat(fingerOnScreenTime), player.position.y)
+//        }
+        if playerMovingRight {
             player.position = CGPointMake(player.position.x + CGFloat(fingerOnScreenTime), player.position.y)
-        } else if  distanceToMove < 0 {
-            distanceToMove += CGFloat(fingerOnScreenTime)
-            player.position = CGPointMake(player.position.x - CGFloat(fingerOnScreenTime), player.position.y)
-        }
+        } else { player.position = CGPointMake(player.position.x - CGFloat(fingerOnScreenTime), player.position.y) }
     }
     
     // MARK: Sounds
