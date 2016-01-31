@@ -10,6 +10,20 @@
 		3F0ED4131C5D41490005251E /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED4121C5D41490005251E /* GameplayScene.swift */; };
 		3F0ED4151C5D41960005251E /* GameplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0ED4141C5D41960005251E /* GameplayViewController.swift */; };
 		3F0ED4191C5D4C620005251E /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3F0ED4181C5D4C620005251E /* sprites.atlas */; };
+		3F3093571C5DE1ED00388EDB /* SXF_Jump_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093491C5DE1ED00388EDB /* SXF_Jump_1.m4a */; };
+		3F3093581C5DE1ED00388EDB /* SXF_Jump_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F30934A1C5DE1ED00388EDB /* SXF_Jump_2.m4a */; };
+		3F3093591C5DE1ED00388EDB /* SXF_Jump_3_short.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F30934B1C5DE1ED00388EDB /* SXF_Jump_3_short.m4a */; };
+		3F30935A1C5DE1ED00388EDB /* SXF_Jump_4_strong.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F30934C1C5DE1ED00388EDB /* SXF_Jump_4_strong.m4a */; };
+		3F30935B1C5DE1ED00388EDB /* SXF_Jump_5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F30934D1C5DE1ED00388EDB /* SXF_Jump_5.m4a */; };
+		3F30935C1C5DE1ED00388EDB /* SXF_Orb_1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F30934E1C5DE1ED00388EDB /* SXF_Orb_1.m4a */; };
+		3F30935D1C5DE1ED00388EDB /* SXF_Orb_2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F30934F1C5DE1ED00388EDB /* SXF_Orb_2.m4a */; };
+		3F30935E1C5DE1ED00388EDB /* SXF_Orb_3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093501C5DE1ED00388EDB /* SXF_Orb_3.m4a */; };
+		3F30935F1C5DE1ED00388EDB /* SXF_Orb_4.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093511C5DE1ED00388EDB /* SXF_Orb_4.m4a */; };
+		3F3093601C5DE1ED00388EDB /* SXF_Orb_5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093521C5DE1ED00388EDB /* SXF_Orb_5.m4a */; };
+		3F3093611C5DE1ED00388EDB /* SXF_Orb_6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093531C5DE1ED00388EDB /* SXF_Orb_6.m4a */; };
+		3F3093621C5DE1ED00388EDB /* SXF_Orb_7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093541C5DE1ED00388EDB /* SXF_Orb_7.m4a */; };
+		3F3093631C5DE1ED00388EDB /* SXF_Orb_8.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093551C5DE1ED00388EDB /* SXF_Orb_8.m4a */; };
+		3F3093641C5DE1ED00388EDB /* SXF_Start.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3F3093561C5DE1ED00388EDB /* SXF_Start.m4a */; };
 		3FC0C9B01C5D59080082A0FA /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0C9AF1C5D59080082A0FA /* MainMenuViewController.swift */; };
 		3FF4C9E21C5D5D7E00871BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF4C9E11C5D5D7E00871BA7 /* Main.storyboard */; };
 		D0C70E3C1C5D8FBF005F715E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D0C70E3A1C5D8FBF005F715E /* spark.png */; };
@@ -26,6 +40,20 @@
 		3F0ED4121C5D41490005251E /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
 		3F0ED4141C5D41960005251E /* GameplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayViewController.swift; sourceTree = "<group>"; };
 		3F0ED4181C5D4C620005251E /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+		3F3093491C5DE1ED00388EDB /* SXF_Jump_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Jump_1.m4a; sourceTree = "<group>"; };
+		3F30934A1C5DE1ED00388EDB /* SXF_Jump_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Jump_2.m4a; sourceTree = "<group>"; };
+		3F30934B1C5DE1ED00388EDB /* SXF_Jump_3_short.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Jump_3_short.m4a; sourceTree = "<group>"; };
+		3F30934C1C5DE1ED00388EDB /* SXF_Jump_4_strong.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Jump_4_strong.m4a; sourceTree = "<group>"; };
+		3F30934D1C5DE1ED00388EDB /* SXF_Jump_5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Jump_5.m4a; sourceTree = "<group>"; };
+		3F30934E1C5DE1ED00388EDB /* SXF_Orb_1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_1.m4a; sourceTree = "<group>"; };
+		3F30934F1C5DE1ED00388EDB /* SXF_Orb_2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_2.m4a; sourceTree = "<group>"; };
+		3F3093501C5DE1ED00388EDB /* SXF_Orb_3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_3.m4a; sourceTree = "<group>"; };
+		3F3093511C5DE1ED00388EDB /* SXF_Orb_4.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_4.m4a; sourceTree = "<group>"; };
+		3F3093521C5DE1ED00388EDB /* SXF_Orb_5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_5.m4a; sourceTree = "<group>"; };
+		3F3093531C5DE1ED00388EDB /* SXF_Orb_6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_6.m4a; sourceTree = "<group>"; };
+		3F3093541C5DE1ED00388EDB /* SXF_Orb_7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_7.m4a; sourceTree = "<group>"; };
+		3F3093551C5DE1ED00388EDB /* SXF_Orb_8.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Orb_8.m4a; sourceTree = "<group>"; };
+		3F3093561C5DE1ED00388EDB /* SXF_Start.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = SXF_Start.m4a; sourceTree = "<group>"; };
 		3FC0C9AF1C5D59080082A0FA /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3FF4C9E11C5D5D7E00871BA7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D0C70E3A1C5D8FBF005F715E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
@@ -51,6 +79,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F3093481C5DE1ED00388EDB /* SFX */ = {
+			isa = PBXGroup;
+			children = (
+				3F3093491C5DE1ED00388EDB /* SXF_Jump_1.m4a */,
+				3F30934A1C5DE1ED00388EDB /* SXF_Jump_2.m4a */,
+				3F30934B1C5DE1ED00388EDB /* SXF_Jump_3_short.m4a */,
+				3F30934C1C5DE1ED00388EDB /* SXF_Jump_4_strong.m4a */,
+				3F30934D1C5DE1ED00388EDB /* SXF_Jump_5.m4a */,
+				3F30934E1C5DE1ED00388EDB /* SXF_Orb_1.m4a */,
+				3F30934F1C5DE1ED00388EDB /* SXF_Orb_2.m4a */,
+				3F3093501C5DE1ED00388EDB /* SXF_Orb_3.m4a */,
+				3F3093511C5DE1ED00388EDB /* SXF_Orb_4.m4a */,
+				3F3093521C5DE1ED00388EDB /* SXF_Orb_5.m4a */,
+				3F3093531C5DE1ED00388EDB /* SXF_Orb_6.m4a */,
+				3F3093541C5DE1ED00388EDB /* SXF_Orb_7.m4a */,
+				3F3093551C5DE1ED00388EDB /* SXF_Orb_8.m4a */,
+				3F3093561C5DE1ED00388EDB /* SXF_Start.m4a */,
+			);
+			path = SFX;
+			sourceTree = "<group>";
+		};
 		D0D6F65B1C5C7C500065AE1C = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +119,7 @@
 		D0D6F6661C5C7C500065AE1C /* Lightkeeper */ = {
 			isa = PBXGroup;
 			children = (
+				3F3093481C5DE1ED00388EDB /* SFX */,
 				3F0ED4181C5D4C620005251E /* sprites.atlas */,
 				3F0ED4141C5D41960005251E /* GameplayViewController.swift */,
 				3F0ED4121C5D41490005251E /* GameplayScene.swift */,
@@ -120,7 +170,6 @@
 				TargetAttributes = {
 					D0D6F6631C5C7C500065AE1C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 9Y3C2M96GL;
 					};
 				};
 			};
@@ -147,11 +196,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F30935C1C5DE1ED00388EDB /* SXF_Orb_1.m4a in Resources */,
 				D0D6F6761C5C7C500065AE1C /* LaunchScreen.storyboard in Resources */,
+				3F3093601C5DE1ED00388EDB /* SXF_Orb_5.m4a in Resources */,
+				3F30935E1C5DE1ED00388EDB /* SXF_Orb_3.m4a in Resources */,
 				D0C70E3C1C5D8FBF005F715E /* spark.png in Resources */,
+				3F3093571C5DE1ED00388EDB /* SXF_Jump_1.m4a in Resources */,
+				3F30935F1C5DE1ED00388EDB /* SXF_Orb_4.m4a in Resources */,
 				D0C70E3E1C5D905E005F715E /* Rain.sks in Resources */,
+				3F30935D1C5DE1ED00388EDB /* SXF_Orb_2.m4a in Resources */,
 				3F0ED4191C5D4C620005251E /* sprites.atlas in Resources */,
+				3F3093621C5DE1ED00388EDB /* SXF_Orb_7.m4a in Resources */,
+				3F3093641C5DE1ED00388EDB /* SXF_Start.m4a in Resources */,
+				3F3093581C5DE1ED00388EDB /* SXF_Jump_2.m4a in Resources */,
+				3F3093611C5DE1ED00388EDB /* SXF_Orb_6.m4a in Resources */,
 				D0D6F6731C5C7C500065AE1C /* Assets.xcassets in Resources */,
+				3F3093631C5DE1ED00388EDB /* SXF_Orb_8.m4a in Resources */,
+				3F3093591C5DE1ED00388EDB /* SXF_Jump_3_short.m4a in Resources */,
+				3F30935A1C5DE1ED00388EDB /* SXF_Jump_4_strong.m4a in Resources */,
+				3F30935B1C5DE1ED00388EDB /* SXF_Jump_5.m4a in Resources */,
 				3FF4C9E21C5D5D7E00871BA7 /* Main.storyboard in Resources */,
 				D0C70E401C5D9188005F715E /* Smoke.sks in Resources */,
 				D0C70E421C5D94A9005F715E /* greenMagic.sks in Resources */,
@@ -278,7 +341,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016ZZ.Lightkeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -292,7 +355,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016ZZ.Lightkeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

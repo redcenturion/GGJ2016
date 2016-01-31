@@ -8,16 +8,19 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
-class GameplayScene: SKScene {
+class GameplayScene: SKScene, AVAudioPlayerDelegate {
     
     // MARK: Variables
     private let world: SKNode = SKNode()
     private var player: SKSpriteNode?
+    private var audioPlayer: AVAudioPlayer?
    
     // Constants
     private let MIDSCREEN: CGPoint = CGPointMake(UIScreen.mainScreen().bounds.size.width / 2, UIScreen.mainScreen().bounds.size.height / 2)
     private let PLAYER_SPEED: CGFloat = 3.0
+    private let ORB_RADIUS: CGFloat = 30
    
     // Movement
     private var touchPosition: CGPoint = CGPointZero
@@ -28,6 +31,8 @@ class GameplayScene: SKScene {
     // MARK: Lifecycle
     override func didMoveToView(view: SKView) {
         print("We are now in the gameplay scene")
+        
+        audioPlayer = AVAudioPlayer()
        
         // Setup
         setupWorld()
@@ -81,6 +86,7 @@ class GameplayScene: SKScene {
         let greenOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 255, b: 0)
         greenOrb.position = CGPointMake(300, 200)
         greenOrb.name = "GreenOrb"
+        greenOrb.runAction(SKAction.scaleBy(5, duration: 2.0))
         world.addChild(greenOrb)
         
         let blueOrb: SKShapeNode = self.createOrbWithColorValues(r: 0, g: 0, b: 255)
@@ -122,13 +128,19 @@ class GameplayScene: SKScene {
         return spriteNode
     }
     
+    // MARK: Orb
     private func createOrbWithColorValues(r red: CGFloat, g green: CGFloat, b blue: CGFloat, a alpha: CGFloat = 1) -> SKShapeNode {
-        let orb = SKShapeNode(circleOfRadius: 30)
+        let orb = SKShapeNode(circleOfRadius: ORB_RADIUS)
         orb.fillColor = SKColor(red: red, green: green, blue: blue, alpha: alpha)
         orb.strokeColor = SKColor(red: red, green: green, blue: blue, alpha: alpha)
         orb.glowWidth = 10.0
         
         return orb
+    }
+    
+    private func createOrbTouchRectBasedOffOrbPosition(position: CGPoint) -> CGRect {
+        let rect = CGRectMake(position.x, position.y, ORB_RADIUS, ORB_RADIUS)
+        return rect
     }
     
     // MARK: Player
@@ -147,6 +159,7 @@ class GameplayScene: SKScene {
         print("The touch position is \(touchPosition)")
         playerShouldMove = true
         movePlayerToTouchPosition(location: touchPosition)
+        self.playSound("SXF_Orb_1")
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -177,5 +190,24 @@ class GameplayScene: SKScene {
             distanceToMove += CGFloat(fingerOnScreenTime)
             player.position = CGPointMake(player.position.x - CGFloat(fingerOnScreenTime), player.position.y)
         }
+    }
+    
+    // MARK: Sounds
+    // How to play sounds
+    // http://stackoverflow.com/questions/24393495/playing-a-sound-with-avaudioplayer
+    private func playSound(soundName: String)
+    {
+        let path = NSBundle.mainBundle().pathForResource(soundName, ofType: "m4a")
+        if let path = path {
+        do {
+                let nsurl = NSURL(fileURLWithPath: path)
+                audioPlayer = try AVAudioPlayer(contentsOfURL:nsurl)
+                if let audioPlayer = audioPlayer {
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.delegate = self
+                    audioPlayer.play()
+                }
+        } catch { print("Error getting the audio file") }
+        } else { print("Not playing anything!") }
     }
 }
