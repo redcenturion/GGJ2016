@@ -12,6 +12,17 @@ import AVFoundation
 
 class InstructionsScene: SKScene, AVAudioPlayerDelegate {
     
+    enum defaultKeys {
+        static let keyOne = "FirstOrb"
+        static let keyTwo = "SecondOrb"
+        static let keyThree = "ThirdOrb"
+        static let keyFour = "FourthOrb"
+        static let keyFive = "FifthOrb"
+        static let keySix = "SixthOrb"
+        static let keySeven = "SeventhOrb"
+        static let keyEight = "EighthOrb"
+    }
+    
     // MARK: Variables
     private let world: SKNode = SKNode()
     private var orbPlayer_Cyan: AVAudioPlayer?
@@ -181,6 +192,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_1", color: "Cyan")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Cyan", andIndex: Int(counter))
                 }
                 break
             case 2:
@@ -190,6 +202,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_2", color: "Red")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Red", andIndex: Int(counter))
                 }
                 break
             case 3:
@@ -199,6 +212,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_3", color: "Black")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Black", andIndex: Int(counter))
                 }
                 break
             case 4:
@@ -208,6 +222,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_4", color: "Yellow")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Yellow", andIndex: Int(counter))
                 }
                 break
             case 5:
@@ -217,6 +232,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_5", color: "Green")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Green", andIndex: Int(counter))
                 }
                 break
             case 6:
@@ -226,6 +242,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_6", color: "Blue")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Blue", andIndex: Int(counter))
                 }
                 break
             case 7:
@@ -235,6 +252,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_7", color: "Purple")
                     })
+                    self.saveOrbsToUserDefaultsForColor("Purple", andIndex: Int(counter))
                 }
                 break
             case 8:
@@ -244,6 +262,7 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                         self.playSound("SXF_Orb_1", color: "White")
                     })
+                    self.saveOrbsToUserDefaultsForColor("White", andIndex: Int(counter))
                 }
                 break
             default:
@@ -252,6 +271,41 @@ class InstructionsScene: SKScene, AVAudioPlayerDelegate {
             delay += 0.5
             counter += 1
         }
+    }
+    
+    private func saveOrbsToUserDefaultsForColor(color: String, andIndex index: Int) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var key: String = ""
+        switch index {
+        case 0:
+            key = "FirstOrb"
+            break
+        case 1:
+            key = "SecondOrb"
+            break
+        case 2:
+            key = "ThirdOrb"
+            break
+        case 3:
+            key = "FourthOrb"
+            break
+        case 4:
+            key = "FifthOrb"
+            break
+        case 5:
+            key = "SixthOrb"
+            break
+        case 6:
+            key = "SeventhOrb"
+            break
+        case 7:
+            key = "EighthOrb"
+            break
+        default:
+            break
+        }
+        defaults.setValue(color, forKey: key)
+        defaults.synchronize()
     }
     
     // MARK: Sounds

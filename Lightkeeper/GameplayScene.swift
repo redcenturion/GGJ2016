@@ -60,6 +60,26 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private var thirdLayer: SKShapeNode?
     private var fourthLayer: SKShapeNode?
     
+    // Fade BGM
+    private var shouldFadegBgmPlayer_Out_1: Bool = false
+    private var shouldFadegBgmPlayer_Out_2: Bool = false
+    private var shouldFadegBgmPlayer_Out_3: Bool = false
+    private var shouldFadegBgmPlayer_Out_4: Bool = false
+    private var shouldFadegBgmPlayer_In_1: Bool = false
+    private var shouldFadegBgmPlayer_In_2: Bool = false
+    private var shouldFadegBgmPlayer_In_3: Bool = false
+    private var shouldFadegBgmPlayer_In_4: Bool = false
+    
+    // Orb Touch Rects
+    private var orbRect_Cyan: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_Red: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_Black: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_Yellow: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_Green: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_Blue: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_Purple: CGRect = CGRectMake(0, 0, 40, 40)
+    private var orbRect_White: CGRect = CGRectMake(0, 0, 40, 40)
+    
     // MARK: Lifecycle
     override func didMoveToView(view: SKView) {
         print("We are now in the gameplay scene")
@@ -90,6 +110,10 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     // MARK: Setup
     private func setupWorld() {
         self.addChild(world)
+        self.playBGM("Music_Gameplay_1_loop", songNumber: 1)
+        self.playBGM("Music_Gameplay_2_loop", songNumber: 2)
+        self.playBGM("Music_Gameplay_3_loop", songNumber: 3)
+        self.playBGM("Music_Gameplay_4_loop", songNumber: 4)
     }
     private func setupBackground() {
         print("Setting up the background")
@@ -182,6 +206,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let cyanOrb = cyanOrb {
             cyanOrb.position = CGPointMake(200, 250)
             cyanOrb.name = "CyanOrb"
+            orbRect_Cyan = CGRectMake(cyanOrb.position.x, cyanOrb.position.y, 40, 40)
             print("Cyan Orb frame: \(cyanOrb.frame)")
             world.addChild(cyanOrb)
         }
@@ -189,6 +214,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         redOrb = self.createOrbWithColorValues(r: 255, g: 0, b: 0)
         if let redOrb = redOrb {
             redOrb.position = CGPointMake(250, 250)
+            orbRect_Red = CGRectMake(redOrb.position.x, redOrb.position.y, 40, 40)
             print("Red Orb frame: \(redOrb.frame)")
             redOrb.name = "RedOrb"
             world.addChild(redOrb)
@@ -198,6 +224,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let blackOrb = blackOrb {
             blackOrb.position = CGPointMake(300, 250)
             blackOrb.name = "BlackOrb"
+            orbRect_Black = CGRectMake(blackOrb.position.x, blackOrb.position.y, 40, 40)
             world.addChild(blackOrb)
         }
         
@@ -205,6 +232,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let yellowOrb = yellowOrb {
             yellowOrb.position = CGPointMake(350, 250)
             yellowOrb.name = "YellowOrb"
+            orbRect_Yellow = CGRectMake(yellowOrb.position.x, yellowOrb.position.y, 40, 40)
             world.addChild(yellowOrb)
         }
         
@@ -212,6 +240,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let greenOrb = greenOrb {
             greenOrb.position = CGPointMake(400, 250)
             greenOrb.name = "GreenOrb"
+            orbRect_Green = CGRectMake(greenOrb.position.x, greenOrb.position.y, 40, 40)
             world.addChild(greenOrb)
         }
         
@@ -219,6 +248,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let blueOrb = blueOrb {
             blueOrb.position = CGPointMake(450, 250)
             blueOrb.name = "BlueOrb"
+            orbRect_Blue = CGRectMake(blueOrb.position.x, blueOrb.position.y, 40, 40)
             world.addChild(blueOrb)
         }
         
@@ -226,6 +256,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let purpleOrb = purpleOrb {
             purpleOrb.position = CGPointMake(500, 250)
             purpleOrb.name = "PurpleOrb"
+            orbRect_Purple = CGRectMake(purpleOrb.position.x, purpleOrb.position.y, 40, 40)
             world.addChild(purpleOrb)
         }
         
@@ -233,6 +264,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let whiteOrb = whiteOrb {
             whiteOrb.position = CGPointMake(550, 250)
             whiteOrb.name = "WhiteOrb"
+            orbRect_White = CGRectMake(whiteOrb.position.x, whiteOrb.position.y, 40, 40)
             world.addChild(whiteOrb)
         }
     }
@@ -266,7 +298,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     private func performActionBasedOnOrbCount() {
         switch orbCount {
         case 0:
-            self.playBGM("Music_Gameplay_1_loop", songNumber: 1)
+            shouldFadegBgmPlayer_In_1 = true
             break
         case 2:
             if let sun = sun {
@@ -275,7 +307,8 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
             secondLayer?.hidden = false
             firstLayer?.runAction(SKAction.fadeAlphaTo(0, duration: 3.0))
             secondLayer?.runAction(SKAction.fadeAlphaTo(0.5, duration: 3.0))
-            self.playBGM("Music_Gameplay_2_loop", songNumber: 2)
+            shouldFadegBgmPlayer_In_2 = true
+            shouldFadegBgmPlayer_Out_1 = true
             break
         case 4:
             if let sun = sun {
@@ -284,7 +317,8 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
             thirdLayer?.hidden = false
             secondLayer?.runAction(SKAction.fadeAlphaTo(0, duration: 3.0))
             thirdLayer?.runAction(SKAction.fadeAlphaTo(0.5, duration: 3.0))
-            self.playBGM("Music_Gameplay_3_loop", songNumber: 3)
+            shouldFadegBgmPlayer_In_3 = true
+            shouldFadegBgmPlayer_Out_2 = true
             break
         case 6:
             if let sun = sun {
@@ -293,7 +327,8 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
             fourthLayer?.hidden = false
             thirdLayer?.runAction(SKAction.fadeAlphaTo(0, duration: 3.0))
             fourthLayer?.runAction(SKAction.fadeAlphaTo(0.5, duration: 3.0))
-            self.playBGM("Music_Gameplay_4_loop", songNumber: 4)
+            shouldFadegBgmPlayer_In_4 = true
+            shouldFadegBgmPlayer_Out_3 = true
             break
         default:
             break
@@ -329,75 +364,55 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
         if let player = player {
             if touchPosition.x > player.position.x {
                playerMovingRight = true
-            } else { playerMovingRight = false }
+            } else {
+                playerMovingRight = false
+            }
         }
         playerShouldMove = true
         movePlayerToTouchPosition(location: touchPosition)
         orbCount++
         self.performActionBasedOnOrbCount()
         
-//        // Play sound on touch location
-//        let rand = Int(arc4random_uniform(8))
-//        switch rand {
-//        case 0:
-////            if let cyanOrb = cyanOrb {
-////                if CGRectContainsPoint(cyanOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_1", color: "Cyan")
-////                }
-////            }
-//            break
-//        case 1:
-////            if let redOrb = redOrb {
-////                if CGRectContainsPoint(redOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_2", color: "Red")
-////                }
-////            }
-//            break
-//        case 2:
-////            if let blackOrb = blackOrb {
-////                if CGRectContainsPoint(blackOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_3", color: "Black")
-////                }
-////            }
-//            break
-//        case 3:
-////            if let yellowOrb = yellowOrb {
-////                if CGRectContainsPoint(yellowOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_4", color: "Yellow")
-////                }
-////            }
-//            break
-//        case 4:
-////            if let greenOrb = greenOrb {
-////                if CGRectContainsPoint(greenOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_5", color: "Green")
-////                }
-////            }
-//            break
-//        case 5:
-////            if let blueOrb = blueOrb {
-////                if CGRectContainsPoint(blueOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_6", color: "Blue")
-////                }
-////            }
-//            break
-//        case 6:
-////            if let purpleOrb = purpleOrb {
-////                if CGRectContainsPoint(purpleOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_7", color: "Purple")
-////                }
-////            }
-//            break
-//        case 7:
-////            if let whiteOrb = whiteOrb {
-////                if CGRectContainsPoint(whiteOrb.frame, touchPosition) {
-//                    self.playSound("SXF_Orb_1", color: "White")
-////                }
-////            }
-//            break
-//        default:
-//            break
-//        }
+        if let cyanOrb = cyanOrb {
+                if CGRectContainsPoint(orbRect_Cyan, touchPosition) {
+                    cyanOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let redOrb = redOrb {
+                if CGRectContainsPoint(orbRect_Red, touchPosition) {
+                    redOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let blackOrb = blackOrb {
+                if CGRectContainsPoint(orbRect_Black, touchPosition) {
+                    blackOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let yellowOrb = yellowOrb {
+                if CGRectContainsPoint(orbRect_Yellow, touchPosition) {
+                    yellowOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let greenOrb = greenOrb {
+                if CGRectContainsPoint(orbRect_Green, touchPosition) {
+                    greenOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let blueOrb = blueOrb {
+                if CGRectContainsPoint(orbRect_Blue, touchPosition) {
+                    blueOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let purpleOrb = purpleOrb {
+                if CGRectContainsPoint(orbRect_Blue, touchPosition) {
+                    purpleOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
+            if let whiteOrb = whiteOrb {
+                if CGRectContainsPoint(orbRect_White, touchPosition) {
+                    whiteOrb.runAction(SKAction.moveTo(CGPointMake(MIDSCREEN.x, MIDSCREEN.y - 120) , duration: 1.0))
+                }
+            }
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -407,7 +422,6 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         guard let touch = touches.first else { return }
         print("Your touch has ended!")
-//        jumpAmount = 100
         playerShouldMove = false
         fingerOnScreenTime = 0
     }
@@ -415,21 +429,14 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
     override func update(currentTime: NSTimeInterval) {
         guard let player = player else { return }
        
+        self.checkIfBGMShouldFadeIn()
+        self.checkIfBGMShouldFadeOut()
+        
         // Ensure only run when player has finger on screen
         if playerShouldMove {
             fingerOnScreenTime += 0.1
         } else { return }
         
-//        if abs(jumpAmount) < 0.2 { jumpAmount = 0 } else { jumpAmount -= 1 }
-        //if abs(distanceToMove) < 0.2 { return }
-       
-//        if distanceToMove >= 0 {
-//            distanceToMove -= CGFloat(fingerOnScreenTime)
-//            player.position = CGPointMake(player.position.x + CGFloat(fingerOnScreenTime), player.position.y)
-//        } else if  distanceToMove < 0 {
-//            distanceToMove += CGFloat(fingerOnScreenTime)
-//            player.position = CGPointMake(player.position.x - CGFloat(fingerOnScreenTime), player.position.y)
-//        }
         if playerMovingRight {
             player.position = CGPointMake(player.position.x + CGFloat(fingerOnScreenTime), player.position.y + jumpAmount)
         } else { player.position = CGPointMake(player.position.x - CGFloat(fingerOnScreenTime), player.position.y + jumpAmount) }
@@ -526,6 +533,7 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                         audioPlayer.prepareToPlay()
                         audioPlayer.delegate = self
                         audioPlayer.numberOfLoops = -1
+                        audioPlayer.volume = 0
                         audioPlayer.play()
                     }
                     break
@@ -535,31 +543,108 @@ class GameplayScene: SKScene, AVAudioPlayerDelegate {
                         audioPlayer.prepareToPlay()
                         audioPlayer.delegate = self
                         audioPlayer.numberOfLoops = -1
+                        audioPlayer.volume = 0
                         audioPlayer.play()
                     }
                     break
                 case 3:
-                bgmPlayer_3 = try AVAudioPlayer(contentsOfURL:nsurl)
+                    bgmPlayer_3 = try AVAudioPlayer(contentsOfURL:nsurl)
                     if let audioPlayer = bgmPlayer_3 {
                         audioPlayer.prepareToPlay()
                         audioPlayer.delegate = self
                         audioPlayer.numberOfLoops = -1
+                        audioPlayer.volume = 0
                         audioPlayer.play()
                     }
                     break
                 case 4:
-                bgmPlayer_4 = try AVAudioPlayer(contentsOfURL:nsurl)
-                if let audioPlayer = bgmPlayer_4 {
-                    audioPlayer.prepareToPlay()
-                    audioPlayer.delegate = self
-                    audioPlayer.numberOfLoops = -1
-                    audioPlayer.play()
-                }
+                    bgmPlayer_4 = try AVAudioPlayer(contentsOfURL:nsurl)
+                    if let audioPlayer = bgmPlayer_4 {
+                        audioPlayer.prepareToPlay()
+                        audioPlayer.delegate = self
+                        audioPlayer.numberOfLoops = -1
+                        audioPlayer.volume = 0
+                        audioPlayer.play()
+                    }
                     break
                 default:
                     break
                 }
             } catch { print("Error getting the audio file") }
         } else { print("Not playing anything!") }
+    }
+    
+    private func checkIfBGMShouldFadeOut() {
+        // Fade audio
+        if shouldFadegBgmPlayer_Out_1 {
+            if let bgmPlayer_1 = bgmPlayer_1 {
+                if bgmPlayer_1.volume < 0.2 {
+                    shouldFadegBgmPlayer_Out_1 = false
+                    bgmPlayer_1.stop()
+                } else { bgmPlayer_1.volume -= 0.01 }
+            }
+        }
+        
+        if shouldFadegBgmPlayer_Out_2 {
+            if let bgmPlayer_2 = bgmPlayer_2 {
+                if bgmPlayer_2.volume < 0.2 {
+                    shouldFadegBgmPlayer_Out_2 = false
+                    bgmPlayer_2.stop()
+                } else { bgmPlayer_2.volume -= 0.01 }
+            }
+        }
+        
+        if shouldFadegBgmPlayer_Out_3 {
+            if let bgmPlayer_3 = bgmPlayer_3 {
+                if bgmPlayer_3.volume < 0.2 {
+                    shouldFadegBgmPlayer_Out_3 = false
+                    bgmPlayer_3.stop()
+                } else { bgmPlayer_3.volume -= 0.01 }
+            }
+        }
+        
+        if shouldFadegBgmPlayer_Out_4 {
+            if let bgmPlayer_4 = bgmPlayer_1 {
+                if bgmPlayer_4.volume < 0.2 {
+                    shouldFadegBgmPlayer_Out_4 = false
+                    bgmPlayer_4.stop()
+                } else { bgmPlayer_4.volume -= 0.01 }
+            }
+        }
+    }
+    
+    private func checkIfBGMShouldFadeIn() {
+        // Fade audio
+        if shouldFadegBgmPlayer_In_1 {
+            if let bgmPlayer_1 = bgmPlayer_1 {
+                if bgmPlayer_1.volume > 0.8 {
+                    shouldFadegBgmPlayer_In_1 = false
+                } else { bgmPlayer_1.volume += 0.01 }
+            }
+        }
+        
+        if shouldFadegBgmPlayer_In_2 {
+            if let bgmPlayer_2 = bgmPlayer_2 {
+                if bgmPlayer_2.volume > 0.8 {
+                    shouldFadegBgmPlayer_In_2 = false
+                } else { bgmPlayer_2.volume += 0.01 }
+            }
+        }
+        
+        if shouldFadegBgmPlayer_In_3 {
+            if let bgmPlayer_3 = bgmPlayer_3 {
+                if bgmPlayer_3.volume > 0.8 {
+                    shouldFadegBgmPlayer_In_3 = false
+                } else { bgmPlayer_3.volume += 0.01 }
+            }
+        }
+        
+        if shouldFadegBgmPlayer_In_4 {
+            if let bgmPlayer_4 = bgmPlayer_4 {
+                if bgmPlayer_4.volume > 0.8 {
+                    shouldFadegBgmPlayer_In_4 = false
+                } else { bgmPlayer_4.volume += 0.01 }
+            }
+        }
     }
 }
