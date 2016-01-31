@@ -108,6 +108,7 @@
 				TargetAttributes = {
 					D0D6F6631C5C7C500065AE1C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9Y3C2M96GL;
 					};
 				};
 			};
@@ -261,7 +262,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016ZZ.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -275,7 +276,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Lightkeeper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016.Lightkeeper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GGJ2016ZZ.Lightkeeper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

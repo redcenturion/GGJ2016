@@ -51,6 +51,7 @@ class MainMenuScene: SKScene {
             playButton.addChild(titleLabel)
             self.addChild(playButton)
         } else { print("something went wrong!") }
+        
     }
     
     private func setupAboutButton() {
@@ -71,4 +72,15 @@ class MainMenuScene: SKScene {
             self.addChild(aboutButton)
         } else { print("something went wrong!") }
     }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        var touch = touches as! set<UITouch>
+        var location = touch.first!.locationInNode(self)
+        var node = self.nodeAtPoint(location)
+        if (node.name == "playButton") {
+            
+        }
+        print("You are touching the screen!")
+    }
+    
+   
 }
