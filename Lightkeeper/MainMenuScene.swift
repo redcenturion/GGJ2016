@@ -18,7 +18,7 @@ class MainMenuScene: SKScene {
         print("We are now in main menu scene")
        
         // Background
-        self.backgroundColor = UIColor.grayColor()
+        self.backgroundColor = UIColor.blackColor()
         
         // Add the UI elements of the scene
         setupUI()
@@ -71,16 +71,11 @@ class MainMenuScene: SKScene {
             aboutButton.addChild(titleLabel)
             self.addChild(aboutButton)
         } else { print("something went wrong!") }
-    }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        var touch = touches as! set<UITouch>
-        var location = touch.first!.locationInNode(self)
-        var node = self.nodeAtPoint(location)
-        if (node.name == "playButton") {
-            
-        }
-        print("You are touching the screen!")
+        
     }
     
+    NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"greenMagic" ofType:@"sks"];
+    SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];    }
+    
    
-}
+
